@@ -51,8 +51,8 @@ def extract_frames(
 
 if __name__ == "__main__":
     # Test rapido
-    video_input = "data/raw_videos/sample.mp4"
-    output_folder = "data/images/train"
+    video_input = "data/raw_videos/ant-sample01.mp4"
+    output_folder = "data/raw_images"
 
     if os.path.exists(video_input):
         extract_frames(video_input, output_folder, frame_interval=15)

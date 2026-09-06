@@ -1,0 +1,13 @@
+train: data/images/train
+val: data/images/val
+test: ../test/images
+
+nc: 1
+names: ['ant-tracker']
+
+roboflow:
+  workspace: daniele-russo2991-gmail-com
+  project: ant-tracker-kkmsv
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/daniele-russo2991-gmail-com/ant-tracker-kkmsv/dataset/1
