@@ -51,7 +51,7 @@ def extract_frames(
 
 if __name__ == "__main__":
     # Test rapido
-    video_input = "data/raw_videos/ant-sample01.mp4"
+    video_input = "data/raw_videos/ant-sample04.mp4"
     output_folder = "data/raw_images"
 
     if os.path.exists(video_input):

@@ -1,8 +1,8 @@
 venv/
 data/raw_videos/
+data/raw_images/
 data/images/
 data/labels/
-outputs/
 *.pt
 __pycache__/
 .vscode/

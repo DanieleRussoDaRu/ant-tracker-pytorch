@@ -1,46 +1,43 @@
 from pathlib import Path
+import shutil
 from ultralytics import YOLO
 
 
 def train_model(
     data_yaml: str = "dataset.yaml",
-    epochs: int = 20,
+    epochs: int = 50,  # Aumentato a 50 epoche per sfruttare il nuovo dataset
     imgsz: int = 640,
-    batch_size: int = 4,
-    weights: str = "yolov8n.pt",
+    batch_size: int = 8,  # Se la tua CPU/GPU lo supporta, 8 velocizza il calcolo
+    weights: str = "yolo11n.pt",  # Riparti dai pesi base per la massima pulizia
 ):
     """Esegue il fine-tuning del modello YOLO per la detection delle formiche."""
-    print(f"--- Inizio Addestramento Modello ({weights}) ---")
+    print(
+        f"--- Inizio Addestramento Modello su Nuovo Dataset ({epochs} epoche) ---"
+    )
 
     model = YOLO(weights)
 
-    # 1. Avvia l'addestramento
     results = model.train(
         data=data_yaml,
         epochs=epochs,
         imgsz=imgsz,
         batch=batch_size,
-        name="ant_detector",
+        name="ant_detector_v2",
         project="outputs/runs",
         optimizer="AdamW",
         lr0=0.001,
         plots=True,
     )
 
-    # 2. Recupera la cartella esatta di salvataggio dall'oggetto results
     save_dir = Path(results.save_dir)
     best_weights_src = save_dir / "weights" / "best.pt"
     target_weights_dst = Path("models/ant_detector_best.pt")
 
-    # 3. Sposta i pesi migliori nella cartella models/
     if best_weights_src.exists():
         target_weights_dst.parent.mkdir(parents=True, exist_ok=True)
-        # Copia o rinomina
-        import shutil
-
         shutil.copy(best_weights_src, target_weights_dst)
         print(
-            f"\nAddestramento completato! Pesi salvati in: '{target_weights_dst}'"
+            f"\nAddestramento completato! Nuovi pesi salvati in: '{target_weights_dst}'"
         )
     else:
         print(
@@ -49,4 +46,4 @@ def train_model(
 
 
 if __name__ == "__main__":
-    train_model(epochs=20)
+    train_model(epochs=50)
