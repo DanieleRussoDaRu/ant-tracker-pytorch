@@ -6,7 +6,7 @@ A clean, modular **Computer Vision & Object Tracking** pipeline built with **PyT
 
 | V1 Inference on Unseen Domain |
 | :---: |
-| ![V1 Tracking Result](outputs/gifs/v1_demo.gif) |
+| ![V1 Tracking Result](outputs/gifs/v1_demo.gif?v=2) |
 
 ## 📁 Repository Structure
 
