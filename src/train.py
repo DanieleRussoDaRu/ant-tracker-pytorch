@@ -5,14 +5,13 @@ from ultralytics import YOLO
 
 def train_model(
     data_yaml: str = "dataset.yaml",
-    epochs: int = 50,  # Aumentato a 50 epoche per sfruttare il nuovo dataset
+    epochs: int = 50,
     imgsz: int = 640,
-    batch_size: int = 8,  # Se la tua CPU/GPU lo supporta, 8 velocizza il calcolo
-    weights: str = "yolo11n.pt",  # Riparti dai pesi base per la massima pulizia
+    batch_size: int = 8,
+    weights: str = "yolo11n.pt",
 ):
-    """Esegue il fine-tuning del modello YOLO per la detection delle formiche."""
     print(
-        f"--- Inizio Addestramento Modello su Nuovo Dataset ({epochs} epoche) ---"
+        f"--- Inizio Addestramento Modello V2 su Nuovo Dataset ({epochs} epoche) ---"
     )
 
     model = YOLO(weights)
@@ -22,22 +21,24 @@ def train_model(
         epochs=epochs,
         imgsz=imgsz,
         batch=batch_size,
+        device=0,
         name="ant_detector_v2",
         project="outputs/runs",
-        optimizer="AdamW",
-        lr0=0.001,
+        optimizer="auto",  # Ripristina l'ottimizzatore di default (SGD/Auto)
+        lr0=0.01,  # Learning rate standard per YOLO
+        amp=False,  # <-- FONDAMENTALE: Disattiva FP16 per evitare Loss NaN
         plots=True,
     )
 
     save_dir = Path(results.save_dir)
     best_weights_src = save_dir / "weights" / "best.pt"
-    target_weights_dst = Path("models/ant_detector_best.pt")
+    target_weights_dst = Path("models/ant_detector_v2_best.pt")
 
     if best_weights_src.exists():
         target_weights_dst.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy(best_weights_src, target_weights_dst)
         print(
-            f"\nAddestramento completato! Nuovi pesi salvati in: '{target_weights_dst}'"
+            f"\nAddestramento V2 completato! Nuovi pesi salvati in: '{target_weights_dst}'"
         )
     else:
         print(

@@ -7,6 +7,6 @@ names: ['ant-tracker']
 roboflow:
   workspace: daniele-russo2991-gmail-com
   project: ant-tracker-kkmsv
-  version: 2
+  version: 3
   license: CC BY 4.0
-  url: https://universe.roboflow.com/daniele-russo2991-gmail-com/ant-tracker-kkmsv/dataset/2
+  url: https://universe.roboflow.com/daniele-russo2991-gmail-com/ant-tracker-kkmsv/dataset/3

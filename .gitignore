@@ -1,8 +1,17 @@
-venv/
-data/raw_videos/
-data/raw_images/
-data/images/
-data/labels/
 *.pt
-__pycache__/
 .vscode/
+
+# Datas and local video
+data/
+
+# Output pesanti e log di YOLO
+outputs/runs/
+outputs/processed_videos/
+runs/
+
+# Ambienti virtuali e cache Python
+venv/
+__pycache__/
+*.pyc
+
+outputs/gifs/v1_demo_high.gif
