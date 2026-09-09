@@ -1,5 +1,9 @@
-*.pt
+model/ant_detector_best.pt
 .vscode/
+
+weights
+yolo11n.pt
+yolov8n.pt
 
 # Datas and local video
 data/

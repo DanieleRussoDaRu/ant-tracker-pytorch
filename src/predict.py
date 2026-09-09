@@ -6,7 +6,7 @@ from ultralytics import YOLO
 
 def run_inference_on_video(
     video_path: str,
-    model_path: str = "models/ant_detector_v2_best.pt",
+    model_path: str = "models/ant_detector_v2.pt",
     output_folder: str = "outputs/processed_videos",
     conf_threshold: float = 0.5,
 ):
@@ -49,5 +49,5 @@ def run_inference_on_video(
 
 if __name__ == "__main__":
     # Sostituisci con il percorso di un video di test presente in raw_videos
-    test_video = "data/raw_videos/ant-sample12.mp4"
+    test_video = "data/raw_videos/ant-sample05.mp4"
     run_inference_on_video(test_video, conf_threshold=0.60)

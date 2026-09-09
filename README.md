@@ -1,10 +1,12 @@
 # 🐜 Ant Tracker PyTorch
 
+*There are over 12,000 species of ants on Earth and an estimated 20 quadrillion individuals. They all look identical, move unpredictably, and never stop overlapping—making them the ultimate stress test for Multi-Object Tracking (MOT).*
+
 A clean, modular **Computer Vision & Object Tracking** pipeline built with **PyTorch**, **YOLO**, and **OpenCV** to detect and track ants from video streams in real-time. Designed as a hands-on project demonstrating fundamental deep learning workflows, custom data ingestion, fine-tuning via transfer learning, and multi-object tracking.
 
 ---
 
-| V1 Inference on Unseen Domain |
+| V1 Inference on unseen Domain |
 | :---: |
 | ![V1 Tracking Result](outputs/gifs/v1_demo.gif) |
 
